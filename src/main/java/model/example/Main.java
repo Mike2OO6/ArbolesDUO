@@ -1,5 +1,6 @@
 package model.example;
 
+import model.example.org.GestorArbol;
 import model.example.org.TipoNodo;
 
 import java.util.List;
@@ -30,24 +31,15 @@ public class Main {
 
             try {
                 switch (opcion) {
-                    case 1:
-                        crearNodo(TipoNodo.CARPETA);
-                        break;
-                    case 2:
-                        crearNodo(TipoNodo.ARCHIVO);
-                        break;
-                    case 3:
-                        listarContenido();
-                        break;
-                    case 4:
-                        buscarPorPrefijo();
-                        break;
-                    case 5:
-                        gestor.exportarPreorden();
-                        break;
-                    case 6:
+                    case 1 -> crearNodo(TipoNodo.CARPETA);
+                    case 2 -> crearNodo(TipoNodo.ARCHIVO);
+                    case 3 -> listarContenido();
+                    case 4 -> buscarPorPrefijo();
+                    case 5 -> gestor.exportarPreorden();
+                    case 6 -> {
                         System.out.println("¡Hasta luego!");
                         return;
+                    }
                 }
             } catch (Exception e) {
                 System.err.println("Error: " + e.getMessage());
@@ -58,45 +50,55 @@ public class Main {
     private static void crearNodo(TipoNodo tipo) {
         System.out.print("Ingrese el nombre del " + (tipo == TipoNodo.CARPETA ? "directorio" : "archivo") + ": ");
         String nombre = scanner.nextLine();
+
         if (nombre == null || nombre.trim().isEmpty()) {
             System.out.println("El nombre no puede estar vacío.");
             return;
         }
-        gestor.crearNodo(nombre, tipo);
+
+        gestor.crearNodo(nombre.trim(), tipo);
         System.out.println((tipo == TipoNodo.CARPETA ? "Directorio" : "Archivo") + " creado exitosamente.");
     }
 
     private static void listarContenido() {
         List<String> contenido = gestor.listarHijos();
+
         if (contenido.isEmpty()) {
             System.out.println("El directorio actual está vacío.");
-        } else {
-            System.out.println("Contenido del directorio actual:");
-            for (String item : contenido) {
-                System.out.println("- " + item);
-            }
+            return;
+        }
+
+        System.out.println("Contenido del directorio actual:");
+        for (String item : contenido) {
+            System.out.println("- " + item);
         }
     }
 
     private static void buscarPorPrefijo() {
         System.out.print("Ingrese el prefijo a buscar: ");
         String prefijo = scanner.nextLine();
+
+        if (prefijo == null) prefijo = "";
+        prefijo = prefijo.trim();
+
         List<String> resultados = gestor.buscarPorPrefijo(prefijo);
 
         if (resultados.isEmpty()) {
             System.out.println("No se encontraron coincidencias.");
-        } else {
-            System.out.println("Coincidencias encontradas:");
-            for (String r : resultados) {
-                System.out.println("- " + r);
-            }
+            return;
+        }
+
+        System.out.println("Coincidencias encontradas:");
+        for (String r : resultados) {
+            System.out.println("- " + r);
         }
     }
 
+    @SuppressWarnings("SameParameterValue")
     private static int leerEntero(int min, int max) {
         while (true) {
             try {
-                int valor = Integer.parseInt(scanner.nextLine());
+                int valor = Integer.parseInt(scanner.nextLine().trim());
                 if (valor >= min && valor <= max) {
                     return valor;
                 }
