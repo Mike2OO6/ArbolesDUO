@@ -35,6 +35,14 @@
       "contenido": "",
       "hijos": [],
       "createdAt": 1765929432221
+    },
+    {
+      "id": "4bf1849f-e0c0-4dff-9808-36c0b794db44",
+      "nombre": "recursadorees.com",
+      "tipo": "CARPETA",
+      "contenido": "",
+      "hijos": [],
+      "createdAt": 1766007388537
     }
   ],
   "createdAt": 0
