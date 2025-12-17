@@ -1,0 +1,41 @@
+{
+  "id": "7aed8ee3-296c-4501-b8ca-9ad241de0946",
+  "nombre": "raiz",
+  "tipo": "CARPETA",
+  "contenido": "",
+  "hijos": [
+    {
+      "id": "754cbf56-16fe-49c7-b2cf-15c274425dd7",
+      "nombre": "gatito",
+      "tipo": "ARCHIVO",
+      "contenido": "",
+      "hijos": [],
+      "createdAt": 1765929410167
+    },
+    {
+      "id": "9ba35b41-7361-4ab4-a500-8161778d12fb",
+      "nombre": "perrito",
+      "tipo": "ARCHIVO",
+      "contenido": "",
+      "hijos": [],
+      "createdAt": 1765929416366
+    },
+    {
+      "id": "6cb75228-e62c-4bcb-a4f4-1da7ba809485",
+      "nombre": "botella",
+      "tipo": "ARCHIVO",
+      "contenido": "",
+      "hijos": [],
+      "createdAt": 1765929423450
+    },
+    {
+      "id": "9d04fc66-78ed-427f-9962-876a531ee789",
+      "nombre": "universo",
+      "tipo": "CARPETA",
+      "contenido": "",
+      "hijos": [],
+      "createdAt": 1765929432221
+    }
+  ],
+  "createdAt": 0
+}

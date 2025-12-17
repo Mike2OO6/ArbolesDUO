@@ -1,0 +1,5 @@
+raiz (carpeta)
+  Galaxia (carpeta)
+  planeta (archivo)
+  saturno (archivo)
+  tierra (archivo)

@@ -11,6 +11,7 @@ public class Nodo {
     private String contenido;
     private final List<Nodo> hijos;
     private transient Nodo padre;  // Marcado como transient
+    private final long createdAt;
 
     public Nodo(String nombre, TipoNodo tipo) {
         this.id = UUID.randomUUID().toString();
@@ -18,9 +19,9 @@ public class Nodo {
         this.tipo = tipo;
         this.contenido = "";
         this.hijos = new ArrayList<>();
+        this.createdAt = System.currentTimeMillis();
     }
 
-    // Getters y Setters
     public String getId() { return id; }
     public String getNombre() { return nombre; }
     public void setNombre(String nombre) { this.nombre = nombre; }
@@ -30,11 +31,10 @@ public class Nodo {
     public List<Nodo> getHijos() { return hijos; }
     public Nodo getPadre() { return padre; }
     public void setPadre(Nodo padre) { this.padre = padre; }
+    public long getCreatedAt() { return createdAt; }
 
     public String getRutaCompleta() {
-        if (padre == null) {
-            return nombre;
-        }
+        if (padre == null) return nombre;
         return padre.getRutaCompleta() + "/" + nombre;
     }
 
